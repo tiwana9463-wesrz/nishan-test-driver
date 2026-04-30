@@ -387,12 +387,16 @@ export default function App() {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
                           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.form.step1.phone}</label>
-                          <input value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className={`w-full bg-white border p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none transition-all hover:shadow-md ${errors.phone ? 'border-red-400' : 'border-slate-200'}`} placeholder="555-0199" />
+                          <input value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className={`w-full bg-white border p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none transition-all hover:shadow-md ${errors.phone ? 'border-red-400' : 'border-slate-200'}`} placeholder="514-695-4200" />
                         </div>
                         <div className="space-y-1">
                           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.form.step1.email}</label>
-                          <input value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className={`w-full bg-white border p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none transition-all hover:shadow-md ${errors.email ? 'border-red-400' : 'border-slate-200'}`} placeholder="john@example.com" />
+                          <input value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className={`w-full bg-white border p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none transition-all hover:shadow-md ${errors.email ? 'border-red-400' : 'border-slate-200'}`} placeholder="jobs@nishantransport.com" />
                         </div>
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.form.step1.city}</label>
+                        <input value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} className={`w-full bg-white border p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none transition-all hover:shadow-md ${errors.city ? 'border-red-400' : 'border-slate-200'}`} placeholder="Dorval, QC" />
                       </div>
                       <div className="space-y-1 pt-2">
                          <button onClick={nextStep} className="w-full bg-[#0F2C59] text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all">
@@ -413,10 +417,33 @@ export default function App() {
                       </div>
                       <div>
                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">{t.form.step2.exp}</label>
-                        <select value={formData.experience} onChange={e => setFormData({...formData, experience: e.target.value})} className="w-full bg-white border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none text-sm transition-all hover:shadow-md hover:border-slate-300">
+                        <select value={formData.experience} onChange={e => setFormData({...formData, experience: e.target.value})} className={`w-full bg-white border p-3 rounded-xl focus:ring-2 focus:ring-[#0F2C59]/10 outline-none text-sm transition-all hover:shadow-md hover:border-slate-300 ${errors.experience ? 'border-red-400' : 'border-slate-200'}`}>
                           <option>{t.form.step2.select}</option>
                           {t.form.step2.expOptions.map(opt => <option key={opt}>{opt}</option>)}
                         </select>
+                      </div>
+                      <div>
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">{t.form.step2.regions}</label>
+                        <div className="flex flex-wrap gap-2">
+                          {[
+                            { id: 'qc', label: t.form.step2.qc },
+                            { id: 'on', label: t.form.step2.on },
+                            { id: 'ab', label: t.form.step2.ab }
+                          ].map((region) => (
+                            <button
+                              key={region.id}
+                              onClick={() => handleRegionToggle(region.id)}
+                              className={`px-3 py-2 rounded-lg border text-[10px] font-bold transition-all ${
+                                formData.regions.includes(region.id)
+                                  ? 'bg-[#0F2C59] text-white border-[#0F2C59]'
+                                  : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300'
+                              }`}
+                            >
+                              {region.label}
+                            </button>
+                          ))}
+                        </div>
+                        {errors.regions && <p className="text-red-500 text-[9px] font-bold mt-1 uppercase">{errors.regions}</p>}
                       </div>
                       <div className="pt-4 flex gap-2">
                          <button onClick={prevStep} className="w-1/3 border border-slate-200 py-4 rounded-xl font-bold text-slate-400 hover:bg-white transition-all">{t.form.back}</button>
@@ -433,6 +460,24 @@ export default function App() {
                           {t.form.step3.truckOptions.map(opt => (
                             <button key={opt} onClick={() => setFormData({...formData, truckType: opt})} className={`p-4 rounded-xl border-2 text-left font-bold text-sm transition-all hover:shadow-md ${formData.truckType === opt ? 'border-[#0F2C59] bg-blue-50 text-[#0F2C59]' : 'border-slate-100 bg-white text-slate-500 hover:border-slate-300 hover:bg-slate-50'}`}>
                               {opt}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">{t.form.step3.startDate}</label>
+                        <div className="grid grid-cols-1 gap-2">
+                          {[
+                            { id: t.form.step3.asap, label: t.form.step3.asap },
+                            { id: t.form.step3.twoWeeks, label: t.form.step3.twoWeeks },
+                            { id: t.form.step3.thirtyDays, label: t.form.step3.thirtyDays }
+                          ].map((opt) => (
+                            <button
+                              key={opt.id}
+                              onClick={() => setFormData({...formData, startDate: opt.id})}
+                              className={`p-3 rounded-xl border-2 text-left font-bold text-xs transition-all hover:shadow-md ${formData.startDate === opt.id ? 'border-[#0F2C59] bg-blue-50 text-[#0F2C59]' : 'border-slate-100 bg-white text-slate-500 hover:border-slate-300 hover:bg-slate-50'}`}
+                            >
+                              {opt.label}
                             </button>
                           ))}
                         </div>
@@ -624,8 +669,8 @@ export default function App() {
               <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">Contact</h4>
               <ul className="space-y-4 text-sm font-medium text-slate-500">
                 <li className="flex items-center gap-3"><Globe className="w-4 h-4" /> Dorval, QC (Head Office)</li>
-                <li>24/7 Dispatch Support</li>
-                <li className="text-blue-400">recruiting@nishantransport.ca</li>
+                <li>Tel: <a href="tel:+15146954200" className="hover:text-blue-400 transition-colors">+1-514-695-4200</a> ext. 145 / 121</li>
+                <li><a href="mailto:Jobs@nishantransport.com" className="text-blue-400 hover:underline">Jobs@nishantransport.com</a></li>
               </ul>
             </div>
           </div>

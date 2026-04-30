@@ -165,9 +165,9 @@ export default function App() {
       <header className="bg-white border-b border-slate-200 px-8 py-3 flex justify-between items-center sticky top-0 z-50">
         <div className="flex items-center">
           <img 
-            src="https://drive.google.com/uc?export=view&id=1njtNLyh2RyV_zrlZvajiftrNd1X33k3-" 
+            src="/logo.png" 
             alt="Nishan Transport Inc. Logo" 
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-12 md:h-16 w-auto object-contain"
           />
         </div>
         <div className="flex items-center space-x-6">
@@ -196,11 +196,11 @@ export default function App() {
         {/* Left Panel: Brand & Hero */}
         <div className="w-full lg:w-3/5 p-6 lg:p-10 flex flex-col justify-between relative overflow-y-auto">
           {/* Background Image Accent */}
-          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
             <img 
-              src="https://drive.google.com/uc?export=view&id=1jsauSh5heQYspmZ6ihLoohETsLMN1HQ2" 
+              src="/banner.png" 
               alt="Truck Background" 
-              className="w-full h-full object-cover grayscale"
+              className="w-full h-full object-cover"
             />
           </div>
 
@@ -245,7 +245,7 @@ export default function App() {
             <div className="bg-[#0F2C59] rounded-2xl p-6 flex items-center space-x-6 lg:mr-10 shadow-xl">
               <div className="relative w-32 h-20 bg-slate-800 rounded-lg overflow-hidden border border-slate-600 group cursor-pointer flex-shrink-0">
                 <img 
-                  src="https://drive.google.com/uc?export=view&id=1jsauSh5heQYspmZ6ihLoohETsLMN1HQ2" 
+                  src="/banner.png" 
                   className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" 
                   alt="Management Video"
                 />

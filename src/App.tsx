@@ -165,7 +165,7 @@ export default function App() {
       <header className="bg-white border-b border-slate-200 px-8 py-3 flex justify-between items-center sticky top-0 z-50">
         <div className="flex items-center">
           <img 
-            src="/logo.png" 
+            src="/logo.png.png" 
             alt="Nishan Transport Inc. Logo" 
             className="h-12 md:h-16 w-auto object-contain"
           />
@@ -198,7 +198,7 @@ export default function App() {
           {/* Background Image Accent */}
           <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
             <img 
-              src="/banner.png" 
+              src="/banner.jpg.png" 
               alt="Truck Background" 
               className="w-full h-full object-cover"
             />
@@ -245,7 +245,7 @@ export default function App() {
             <div className="bg-[#0F2C59] rounded-2xl p-6 flex items-center space-x-6 lg:mr-10 shadow-xl">
               <div className="relative w-32 h-20 bg-slate-800 rounded-lg overflow-hidden border border-slate-600 group cursor-pointer flex-shrink-0">
                 <img 
-                  src="/banner.png" 
+                  src="/banner.jpg.png" 
                   className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" 
                   alt="Management Video"
                 />
